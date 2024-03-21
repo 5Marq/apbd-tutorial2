@@ -2,7 +2,7 @@ using System;
 
 namespace tutorial2
 {
-    public class Container
+    public abstract class Container
     {
         private double height;
         private double netWeight;
@@ -12,7 +12,8 @@ namespace tutorial2
         private static int number;
         private double maxLoad;
         private double load = 0;
-        
+
+
         public Container(double weight, double height, double netWeight, double depth, char type, double maxLoad)
         {
             this.height = height;
@@ -28,24 +29,24 @@ namespace tutorial2
         {
             return serialNumber;
         }
-        
-        private void unloadCargo()
+
+        protected double getMaxLoad()
         {
-            load = 0;
-            Console.WriteLine("Pomyślnie rozładowano kontener");
+            return maxLoad;
+        }
+        
+        protected double getLoad()
+        {
+            return load;
+        }
+        
+        protected void setCargoWeight(double cargoWeight)
+        {
+            this.load = cargoWeight;
         }
 
-        private void loadCargo(double cargoWeight)
-        {
-            load += cargoWeight;
-            if (load > maxLoad)
-            {
-                throw new ArgumentException("Przekroczono maksymalną ładowność!");
-            }
-            else
-            {
-                Console.WriteLine("Pomyślnie załadowano ładunek");
-            }
-        }
+        protected abstract void unloadCargo();
+
+        protected abstract void loadCargo(double cargoWeight);
     }
 }
