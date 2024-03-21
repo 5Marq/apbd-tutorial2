@@ -19,7 +19,7 @@ namespace tutorial2
         
         protected override void loadCargo(double cargoWeight)
         {
-            if (cargoWeight > getMaxLoad()*0.9)
+            if (cargoWeight > getMaxLoad())
             {
                 notify();
             }
