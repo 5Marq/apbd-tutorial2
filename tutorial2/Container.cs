@@ -23,11 +23,11 @@ namespace tutorial2
             this.depth = depth;
             this.type = type;
             this.maxLoad = maxLoad;
-            serialNumber += "-" + type + "-" + serialNumber;
+            serialNumber += "-" + type + "-" + number;
             number++;
         }
 
-        protected string getSerialNunber()
+        public string getSerialNunber()
         {
             return serialNumber;
         }
@@ -39,6 +39,14 @@ namespace tutorial2
         protected double getMaxLoad()
         {
             return maxLoad;
+        }
+
+        public void showContainers()
+        {
+            for (int i = 0; i < containers.Count; i++)
+            {
+                Console.WriteLine(containers[i].getSerialNunber());
+            }
         }
         
         protected double getLoad()
