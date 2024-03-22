@@ -5,14 +5,14 @@ namespace tutorial2
     public class LiquidContainer  : Container, IHazardNotifier
     {
         private bool isDangerous = false;
-        public LiquidContainer(double weight, double height, double netWeight, double depth, char type,
-            double maxLoad, bool isDangerous) : base(weight, height, netWeight, depth, type, maxLoad)
+        public LiquidContainer(double height, double netWeight, double depth, char type,
+            double maxLoad, bool isDangerous) : base(height, netWeight, depth, type, maxLoad)
         {
             this.isDangerous = isDangerous;
         }
         public void notify()
         {
-            Console.WriteLine("Niebezpieczna sytuacja! Numer kontenera: "+getSerialNunber());
+            Console.WriteLine("Danger! Container ID: "+getSerialNunber());
         }
         
         protected override void unloadCargo()

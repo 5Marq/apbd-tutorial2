@@ -2,14 +2,14 @@ namespace tutorial2
 {
     public class GasContainer : Container, IHazardNotifier
     {
-        public GasContainer(double weight, double height, double netWeight, double depth, char type,
-            double maxLoad) : base(weight, height, netWeight, depth, type, maxLoad)
+        public GasContainer(double height, double netWeight, double depth, char type,
+            double maxLoad) : base(height, netWeight, depth, type, maxLoad)
         {
             
         }
         public void notify()
         {
-            System.Console.WriteLine("Niebezpieczna sytuacja! Numer kontenera: "+getSerialNunber());
+            System.Console.WriteLine("Danger! Container ID: "+getSerialNunber());
         }
         
         protected override void unloadCargo()

@@ -9,15 +9,15 @@ namespace tutorial2
         private double temperature = 0;
         private Product product;
 
-        public RefrigiratedContainer(double weight, double height, double netWeight, double depth, char type,
-            double maxLoad, double temperature) : base(weight, height, netWeight, depth, type, maxLoad)
+        public RefrigiratedContainer(double height, double netWeight, double depth, char type,
+            double maxLoad, double temperature) : base(height, netWeight, depth, type, maxLoad)
         {
             this.temperature = temperature;
         }
 
         public void notify()
         {
-            System.Console.WriteLine("Niebezpieczna sytuacja! Numer kontenera: " + getSerialNunber());
+            System.Console.WriteLine("Danger! Container ID: " + getSerialNunber());
         }
 
         protected override void unloadCargo()
@@ -30,8 +30,6 @@ namespace tutorial2
             Product
                 product = new Product(cargoType,
                     temperature); //todo let the user choose the cargo and then create the product
-            //todo get rid of choosing product from the constructor
-
             Console.WriteLine("Choose cargo type:");
             Console.WriteLine("1. Bananas");
             Console.WriteLine("2. Chocolate");
@@ -44,24 +42,51 @@ namespace tutorial2
             {
                 case "1":
                 {
-                    product = new Product("Bananas", temperature);
+                    this.product = new Product("Bananas", temperature);
+                    if (this.product.isTempOk())
+                    {
+                        Console.WriteLine("Enter cargo weight: ");
+                        setCargoWeight(Convert.ToDouble(Console.ReadLine()));
+                        Console.WriteLine("Cargo loaded successfully!");
+                    }
+
                     break;
                 }
                 case "2":
                 {
-                    product = new Product("Chocolate", temperature);
+                    this.product = new Product("Chocolate", temperature);
+                    if (this.product.isTempOk())
+                    {
+                        Console.WriteLine("Enter cargo weight: ");
+                        setCargoWeight(Convert.ToDouble(Console.ReadLine()));
+                        Console.WriteLine("Cargo loaded successfully!");
+                    }
+
                     break;
                 }
                 case "3":
                 {
-                    product = new Product("Fish", temperature);
+                    this.product = new Product("Fish", temperature);
+                    if (this.product.isTempOk())
+                    {
+                        Console.WriteLine("Enter cargo weight: ");
+                        setCargoWeight(Convert.ToDouble(Console.ReadLine()));
+                        Console.WriteLine("Cargo loaded successfully!");
+                    }
+
                     break;
                 }
                 case "4":
                 {
-                    product = new Product("Meat", temperature);
+                    this.product = new Product("Meat", temperature);
+                    if (this.product.isTempOk())
+                    {
+                        Console.WriteLine("Enter cargo weight: ");
+                        setCargoWeight(Convert.ToDouble(Console.ReadLine()));
+                        Console.WriteLine("Cargo loaded successfully!");
+                    }
+
                     break;
-                    
                 }
                 default:
                 {
@@ -69,17 +94,15 @@ namespace tutorial2
                     break;
                 }
             }
-            
-
 
             if (cargoWeight > getMaxLoad())
-                    {
-                        notify();
-                    }
-                    else
-                    {
-                        setCargoWeight(cargoWeight);
-                    }
+            {
+                notify();
+            }
+            else
+            {
+                setCargoWeight(cargoWeight);
             }
         }
     }
+}
