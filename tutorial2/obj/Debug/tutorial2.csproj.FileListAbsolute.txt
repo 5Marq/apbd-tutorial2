@@ -1,0 +1,6 @@
+D:\Cloud\Mój dysk\School PL\APDB\2\tutorial2\tutorial2\bin\Debug\tutorial2.pdb
+D:\Cloud\Mój dysk\School PL\APDB\2\tutorial2\tutorial2\obj\Debug\tutorial2.csproj.AssemblyReference.cache
+D:\Cloud\Mój dysk\School PL\APDB\2\tutorial2\tutorial2\obj\Debug\tutorial2.csproj.CoreCompileInputs.cache
+D:\Cloud\Mój dysk\School PL\APDB\2\tutorial2\tutorial2\obj\Debug\tutorial2.pdb
+D:\Cloud\Mój dysk\School PL\APDB\2\tutorial2\tutorial2\bin\Debug\tutorial2.exe
+D:\Cloud\Mój dysk\School PL\APDB\2\tutorial2\tutorial2\obj\Debug\tutorial2.exe
