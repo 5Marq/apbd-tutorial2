@@ -17,7 +17,7 @@ namespace tutorial2
 
         public void notify()
         {
-            System.Console.WriteLine("Danger! Container ID: " + getSerialNunber());
+            System.Console.WriteLine("Danger! Container ID: " + getSerialNumber());
         }
 
         protected override void unloadCargo()
@@ -25,16 +25,17 @@ namespace tutorial2
             setCargoWeight(0);
         }
 
-        protected override void loadCargo(double cargoWeight)
+        public override void loadCargo(double cargoWeight)
         {
             Product
                 product = new Product(cargoType,
-                    temperature); //todo let the user choose the cargo and then create the product
-            Console.WriteLine("Choose cargo type:");
+                    temperature); 
+            Console.WriteLine("==========Cargo==========");
             Console.WriteLine("1. Bananas");
             Console.WriteLine("2. Chocolate");
             Console.WriteLine("3. Fish");
             Console.WriteLine("4. Meat");
+            Console.WriteLine("Choose cargo type:");
 
             string choice = Console.ReadLine();
 
@@ -45,8 +46,12 @@ namespace tutorial2
                     this.product = new Product("Bananas", temperature);
                     if (this.product.isTempOk())
                     {
-                        Console.WriteLine("Enter cargo weight: ");
-                        setCargoWeight(Convert.ToDouble(Console.ReadLine()));
+                        if (cargoWeight > getMaxLoad())
+                        {
+                            notify();
+                            break;
+                        }
+                        setCargoWeight(cargoWeight);
                         Console.WriteLine("Cargo loaded successfully!");
                     }
 
@@ -57,11 +62,14 @@ namespace tutorial2
                     this.product = new Product("Chocolate", temperature);
                     if (this.product.isTempOk())
                     {
-                        Console.WriteLine("Enter cargo weight: ");
-                        setCargoWeight(Convert.ToDouble(Console.ReadLine()));
+                        if (cargoWeight > getMaxLoad())
+                        {
+                            notify();
+                            break;
+                        }
+                        setCargoWeight(cargoWeight);
                         Console.WriteLine("Cargo loaded successfully!");
                     }
-
                     break;
                 }
                 case "3":
@@ -69,8 +77,13 @@ namespace tutorial2
                     this.product = new Product("Fish", temperature);
                     if (this.product.isTempOk())
                     {
-                        Console.WriteLine("Enter cargo weight: ");
-                        setCargoWeight(Convert.ToDouble(Console.ReadLine()));
+                        if (cargoWeight > getMaxLoad())
+                        {
+                            notify();
+                            break;
+                        }
+                        setCargoWeight(cargoWeight);
+
                         Console.WriteLine("Cargo loaded successfully!");
                     }
 
@@ -81,8 +94,13 @@ namespace tutorial2
                     this.product = new Product("Meat", temperature);
                     if (this.product.isTempOk())
                     {
-                        Console.WriteLine("Enter cargo weight: ");
-                        setCargoWeight(Convert.ToDouble(Console.ReadLine()));
+                        if (cargoWeight > getMaxLoad())
+                        {
+                            notify();
+                            break;
+                        }
+                        setCargoWeight(cargoWeight);
+
                         Console.WriteLine("Cargo loaded successfully!");
                     }
 
@@ -93,15 +111,6 @@ namespace tutorial2
                     Console.WriteLine("Invalid choice!");
                     break;
                 }
-            }
-
-            if (cargoWeight > getMaxLoad())
-            {
-                notify();
-            }
-            else
-            {
-                setCargoWeight(cargoWeight);
             }
         }
     }

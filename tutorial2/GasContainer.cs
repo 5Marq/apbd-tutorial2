@@ -9,7 +9,7 @@ namespace tutorial2
         }
         public void notify()
         {
-            System.Console.WriteLine("Danger! Container ID: "+getSerialNunber());
+            System.Console.WriteLine("Danger! Container ID: "+getSerialNumber());
         }
         
         protected override void unloadCargo()
@@ -17,7 +17,7 @@ namespace tutorial2
             setCargoWeight(getLoad()*0.05);
         }
         
-        protected override void loadCargo(double cargoWeight)
+        public override void loadCargo(double cargoWeight)
         {
             if (cargoWeight > getMaxLoad())
             {

@@ -27,7 +27,7 @@ namespace tutorial2
             number++;
         }
 
-        public string getSerialNunber()
+        public string getSerialNumber()
         {
             return serialNumber;
         }
@@ -45,22 +45,22 @@ namespace tutorial2
         {
             for (int i = 0; i < containers.Count; i++)
             {
-                Console.WriteLine(containers[i].getSerialNunber());
+                Console.WriteLine(containers[i].getSerialNumber());
             }
         }
         
-        protected double getLoad()
+        public double getLoad()
         {
             return load;
         }
         
         protected void setCargoWeight(double cargoWeight)
         {
-            this.load = cargoWeight;
+            this.load += cargoWeight;
         }
 
         protected abstract void unloadCargo();
 
-        protected abstract void loadCargo(double cargoWeight);
+        public abstract void loadCargo(double cargoWeight);
     }
 }

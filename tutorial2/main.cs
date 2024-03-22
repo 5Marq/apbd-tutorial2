@@ -8,6 +8,23 @@ namespace tutorial2
     public class main
     {
         static List<Container> containersToShow = new List<Container>();
+
+        protected static void showContainers()
+        {
+            Console.WriteLine("==========Containers===========");
+            if (containersToShow.Count == 0)
+            {
+                Console.WriteLine("No containers to show!");
+                Thread.Sleep(1000);
+                return;
+            }
+                        
+            for (int i = 0; i < containersToShow.Count; i++)
+            {
+                Console.WriteLine($"{i}. Serial: {containersToShow[i].getSerialNumber()}, Load: {containersToShow[i].getLoad()}");
+            }
+            Thread.Sleep(1000);
+        }
         
         protected static void addContainer()
         {
@@ -109,6 +126,13 @@ namespace tutorial2
                     }
                     case "2":
                     {
+                        showContainers();
+                        Console.WriteLine("Choose container to load cargo(pick a number): ");
+                        int containerChoice = Convert.ToInt16(Console.ReadLine());
+                        Console.WriteLine("Loading cargo for container: "+containersToShow[containerChoice].getSerialNumber());
+                        Console.WriteLine("Enter cargo weight: ");
+                        double cargoWeight = Convert.ToDouble(Console.ReadLine());
+                        containersToShow[containerChoice].loadCargo(cargoWeight);
                         break;
                     }
                     case "3":
@@ -129,19 +153,7 @@ namespace tutorial2
                     }
                     case "7":
                     {
-                        Console.WriteLine("==========Containers===========");
-                        if (containersToShow.Count == 0)
-                        {
-                            Console.WriteLine("No containers to show!");
-                            Thread.Sleep(1000);
-                            break;
-                        }
-                        
-                        for (int i = 0; i < containersToShow.Count; i++)
-                        {
-                            Console.WriteLine(containersToShow[i].getSerialNunber());
-                        }
-                        Thread.Sleep(1000);
+                        showContainers();
                         break;
                     }
                     case "8":
