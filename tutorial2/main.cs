@@ -19,11 +19,13 @@ namespace tutorial2
                 Thread.Sleep(1000);
                 return;
             }
-                        
+
             for (int i = 0; i < containersToShow.Count; i++)
             {
-                Console.WriteLine($"{i}. Serial: {containersToShow[i].getSerialNumber()}, Load: {containersToShow[i].getLoad()}");
+                Console.WriteLine(
+                    $"{i}. Serial: {containersToShow[i].getSerialNumber()}, Load: {containersToShow[i].getLoad()}");
             }
+
             Thread.Sleep(1000);
         }
 
@@ -36,10 +38,10 @@ namespace tutorial2
                 Thread.Sleep(1000);
                 return;
             }
-                        
+
             for (int i = 0; i < shipsToShow.Count; i++)
             {
-                Console.WriteLine(i+". Serial: "+shipsToShow[i].getSerialNumber());
+                Console.WriteLine(i + ". Serial: " + shipsToShow[i].getSerialNumber());
                 Console.WriteLine("Containers on this ship:");
                 List<Container> tempContainers = shipsToShow[i].getContainers();
                 if (containersToShow.Count == 0)
@@ -48,14 +50,16 @@ namespace tutorial2
                     Thread.Sleep(1000);
                     return;
                 }
+
                 for (int j = 0; j < shipsToShow[i].getContainers().Count; j++)
                 {
                     Console.WriteLine(tempContainers[i].getSerialNumber());
                 }
             }
+
             Thread.Sleep(1000);
         }
-        
+
         protected static void addContainer()
         {
             Console.WriteLine("==========================");
@@ -63,7 +67,7 @@ namespace tutorial2
             Console.WriteLine("2. Refrigirated");
             Console.WriteLine("3. Gas");
             Console.WriteLine("Choose container type: ");
-            
+
             string containerChoice = Console.ReadLine();
 
             switch (containerChoice)
@@ -121,7 +125,7 @@ namespace tutorial2
                 }
             }
         }
-        
+
         protected static void addShip()
         {
             Console.WriteLine("Enter max ship load: ");
@@ -195,7 +199,8 @@ namespace tutorial2
                         showContainers();
                         Console.WriteLine("Choose container to load cargo(pick a number): ");
                         int containerChoice = Convert.ToInt16(Console.ReadLine());
-                        Console.WriteLine("Loading cargo for container: "+containersToShow[containerChoice].getSerialNumber());
+                        Console.WriteLine("Loading cargo for container: " +
+                                          containersToShow[containerChoice].getSerialNumber());
                         Console.WriteLine("Enter cargo weight: ");
                         double cargoWeight = Convert.ToDouble(Console.ReadLine());
                         containersToShow[containerChoice].loadCargo(cargoWeight);
@@ -228,7 +233,10 @@ namespace tutorial2
                             Thread.Sleep(1000);
                             break;
                         }
-                        Console.WriteLine("Removed cargo from container: "+containersToShow[containerChoice].getSerialNumber()+" with load of (kg): "+containersToShow[containerChoice].getLoad());
+
+                        Console.WriteLine("Removed cargo from container: " +
+                                          containersToShow[containerChoice].getSerialNumber() + " with load of (kg): " +
+                                          containersToShow[containerChoice].getLoad());
                         containersToShow[containerChoice].unloadCargo();
                         Thread.Sleep(1500);
                         break;

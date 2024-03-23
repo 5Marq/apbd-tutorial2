@@ -4,29 +4,28 @@ namespace tutorial2
 {
     public class GasContainer : Container, IHazardNotifier
     {
-
         private string cargoType = "";
         private Product product;
-        
+
         public GasContainer(double height, double netWeight, double depth, char type,
             double maxLoad) : base(height, netWeight, depth, type, maxLoad)
         {
-            
         }
+
         public void notify()
         {
-            System.Console.WriteLine("Danger! Container ID: "+getSerialNumber());
+            System.Console.WriteLine("Danger! Container ID: " + getSerialNumber());
         }
-        
+
         public override void unloadCargo()
         {
-            setCargoWeight(getLoad()*0.05);
+            setCargoWeight(getLoad() * 0.05);
         }
-        
+
         public override void loadCargo(double cargoWeight)
         {
             Product
-                product = new Product(cargoType); 
+                product = new Product(cargoType);
             Console.WriteLine("==========Cargo==========");
             Console.WriteLine("1. Carbon dioxide");
             Console.WriteLine("2. Carbon monoxide");
@@ -42,18 +41,19 @@ namespace tutorial2
                     try
                     {
                         this.product = new Product("Carbon dioxide");
-                            if (cargoWeight > getMaxLoad())
-                            {
-                                throw new OverfillException("Cannot load cargo! Max load exceeded!");
-                            }
-                            setCargoWeight(cargoWeight);
-                            Console.WriteLine("Cargo loaded successfully!");
-                        
+                        if (cargoWeight > getMaxLoad())
+                        {
+                            throw new OverfillException("Cannot load cargo! Max load exceeded!");
+                        }
+
+                        setCargoWeight(cargoWeight);
+                        Console.WriteLine("Cargo loaded successfully!");
                     }
                     catch (OverfillException e)
                     {
                         Console.WriteLine(e.Message);
                     }
+
                     break;
                 }
                 case "2":
@@ -61,20 +61,20 @@ namespace tutorial2
                     try
                     {
                         this.product = new Product("Carbon monoxide");
-                        
-                            if (cargoWeight > getMaxLoad())
-                            {
-                                throw new OverfillException("Cannot load cargo! Max load exceeded!");
-                            }
 
-                            setCargoWeight(cargoWeight);
-                            Console.WriteLine("Cargo loaded successfully!");
-                        
+                        if (cargoWeight > getMaxLoad())
+                        {
+                            throw new OverfillException("Cannot load cargo! Max load exceeded!");
+                        }
+
+                        setCargoWeight(cargoWeight);
+                        Console.WriteLine("Cargo loaded successfully!");
                     }
                     catch (OverfillException e)
                     {
                         Console.WriteLine(e.Message);
                     }
+
                     break;
                 }
                 case "3":
@@ -82,21 +82,21 @@ namespace tutorial2
                     try
                     {
                         this.product = new Product("Nitrous oxide");
-                        
-                            if (cargoWeight > getMaxLoad())
-                            {
-                                throw new OverfillException("Cannot load cargo! Max load exceeded!");
-                            }
 
-                            setCargoWeight(cargoWeight);
+                        if (cargoWeight > getMaxLoad())
+                        {
+                            throw new OverfillException("Cannot load cargo! Max load exceeded!");
+                        }
 
-                            Console.WriteLine("Cargo loaded successfully!");
-                        
+                        setCargoWeight(cargoWeight);
+
+                        Console.WriteLine("Cargo loaded successfully!");
                     }
                     catch (OverfillException e)
                     {
                         Console.WriteLine(e.Message);
                     }
+
                     break;
                 }
                 default:
@@ -106,6 +106,5 @@ namespace tutorial2
                 }
             }
         }
-
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 //zakladamy ze do kazdego kontenera mozna dodac tylko jeden produkt
 
 namespace tutorial2
@@ -14,7 +15,7 @@ namespace tutorial2
         private static int number;
         private double maxLoad;
         private double load = 0;
-        
+
         private static List<Container> containers = new List<Container>();
 
         public Container(double height, double netWeight, double depth, char type, double maxLoad)
@@ -32,10 +33,11 @@ namespace tutorial2
         {
             return serialNumber;
         }
+
         public void addContainer(Container container)
         {
             containers.Add(container);
-        } 
+        }
 
         protected double getMaxLoad()
         {
@@ -49,12 +51,12 @@ namespace tutorial2
                 Console.WriteLine(containers[i].getSerialNumber());
             }
         }
-        
+
         public double getLoad()
         {
             return load;
         }
-        
+
         protected void setCargoWeight(double cargoWeight)
         {
             this.load += cargoWeight;

@@ -10,6 +10,7 @@ namespace tutorial2
             this.name = name;
             this.containerTemp = containerTemperature;
         }
+
         public Product(string name)
         {
             this.name = name;

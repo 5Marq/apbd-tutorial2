@@ -29,7 +29,7 @@ namespace tutorial2
         {
             Product
                 product = new Product(cargoType,
-                    temperature); 
+                    temperature);
             Console.WriteLine("==========Cargo==========");
             Console.WriteLine("1. Bananas");
             Console.WriteLine("2. Chocolate");
@@ -52,6 +52,7 @@ namespace tutorial2
                             {
                                 throw new OverfillException("Cannot load cargo! Max load exceeded!");
                             }
+
                             setCargoWeight(cargoWeight);
                             Console.WriteLine("Cargo loaded successfully!");
                         }
@@ -60,6 +61,7 @@ namespace tutorial2
                     {
                         Console.WriteLine(e.Message);
                     }
+
                     break;
                 }
                 case "2":
@@ -82,6 +84,7 @@ namespace tutorial2
                     {
                         Console.WriteLine(e.Message);
                     }
+
                     break;
                 }
                 case "3":
@@ -105,6 +108,7 @@ namespace tutorial2
                     {
                         Console.WriteLine(e.Message);
                     }
+
                     break;
                 }
                 case "4":
@@ -128,6 +132,7 @@ namespace tutorial2
                     {
                         Console.WriteLine(e.Message);
                     }
+
                     break;
                 }
                 default:

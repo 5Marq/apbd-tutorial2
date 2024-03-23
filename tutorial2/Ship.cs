@@ -25,7 +25,7 @@ namespace tutorial2
         {
             return serialNumber;
         }
-        
+
         public void addContainer(Container container)
         {
             if (containersOnTheShip.Count < maxContainers)
@@ -34,13 +34,15 @@ namespace tutorial2
                 load += container.getLoad();
                 return;
             }
+
             if (load + container.getLoad() > maxLoad)
             {
                 throw new OverfillException("Cannot load container! Max ship load exceeded!");
             }
+
             notify();
         }
-        
+
         public double getLoad()
         {
             return load;
@@ -50,7 +52,7 @@ namespace tutorial2
         {
             containersOnTheShip.RemoveAt(index);
         }
-        
+
         public List<Container> getContainers()
         {
             return containersOnTheShip;
@@ -58,7 +60,7 @@ namespace tutorial2
 
         public void notify()
         {
-            System.Console.WriteLine("Danger! Ship ID: "+getSerialNumber());
+            System.Console.WriteLine("Danger! Ship ID: " + getSerialNumber());
         }
     }
 }
