@@ -59,7 +59,7 @@ namespace tutorial2
             this.load += cargoWeight;
         }
 
-        protected abstract void unloadCargo();
+        public abstract void unloadCargo();
 
         public abstract void loadCargo(double cargoWeight);
     }

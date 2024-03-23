@@ -8,6 +8,7 @@ namespace tutorial2
     public class main
     {
         static List<Container> containersToShow = new List<Container>();
+        static List<Ship> shipsToShow = new List<Ship>();
 
         protected static void showContainers()
         {
@@ -22,6 +23,23 @@ namespace tutorial2
             for (int i = 0; i < containersToShow.Count; i++)
             {
                 Console.WriteLine($"{i}. Serial: {containersToShow[i].getSerialNumber()}, Load: {containersToShow[i].getLoad()}");
+            }
+            Thread.Sleep(1000);
+        }
+
+        protected static void showShips()
+        {
+            Console.WriteLine("==========Ships===========");
+            if (shipsToShow.Count == 0)
+            {
+                Console.WriteLine("No ships to show!");
+                Thread.Sleep(1000);
+                return;
+            }
+                        
+            for (int i = 0; i < shipsToShow.Count; i++)
+            {
+                Console.WriteLine("Ship ID: "+shipsToShow[i].getSerialNumber());
             }
             Thread.Sleep(1000);
         }
@@ -102,12 +120,12 @@ namespace tutorial2
 
             while (programState)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(1000); //using sleep to allow user to read the info
                 Console.WriteLine("=================MENU====================");
                 Console.WriteLine("1. Add a new container");
                 Console.WriteLine("2. Load cargo to the container");
                 Console.WriteLine("3. Add a new ship");
-                Console.WriteLine("4. Load cargo to the ship");
+                Console.WriteLine("4. Load container to the ship");
                 Console.WriteLine("5. Unload container from the ship");
                 Console.WriteLine("6. Unload cargo from the container");
                 Console.WriteLine("7. Show all containers");
@@ -133,10 +151,13 @@ namespace tutorial2
                         Console.WriteLine("Enter cargo weight: ");
                         double cargoWeight = Convert.ToDouble(Console.ReadLine());
                         containersToShow[containerChoice].loadCargo(cargoWeight);
+                        Console.WriteLine("Cargo successfully loaded!");
+                        Thread.Sleep(1000);
                         break;
                     }
                     case "3":
                     {
+                        
                         break;
                     }
                     case "4":
@@ -149,6 +170,18 @@ namespace tutorial2
                     }
                     case "6":
                     {
+                        showContainers();
+                        Console.WriteLine("Choose container to unload cargo(pick a number): ");
+                        int containerChoice = Convert.ToInt16(Console.ReadLine());
+                        if (containersToShow[containerChoice].getLoad() == 0)
+                        {
+                            Console.WriteLine("Container is empty!");
+                            Thread.Sleep(1000);
+                            break;
+                        }
+                        Console.WriteLine("Removed cargo from container: "+containersToShow[containerChoice].getSerialNumber()+" with load of (kg): "+containersToShow[containerChoice].getLoad());
+                        containersToShow[containerChoice].unloadCargo();
+                        Thread.Sleep(1500);
                         break;
                     }
                     case "7":

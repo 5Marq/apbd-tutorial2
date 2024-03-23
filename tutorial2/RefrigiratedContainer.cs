@@ -20,7 +20,7 @@ namespace tutorial2
             System.Console.WriteLine("Danger! Container ID: " + getSerialNumber());
         }
 
-        protected override void unloadCargo()
+        public override void unloadCargo()
         {
             setCargoWeight(0);
         }
