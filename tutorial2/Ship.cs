@@ -31,7 +31,12 @@ namespace tutorial2
             if (containersOnTheShip.Count < maxContainers)
             {
                 containersOnTheShip.Add(container);
+                load += container.getLoad();
                 return;
+            }
+            if (load + container.getLoad() > maxLoad)
+            {
+                throw new OverfillException("Cannot load container! Max ship load exceeded!");
             }
             notify();
         }
@@ -39,6 +44,16 @@ namespace tutorial2
         public double getLoad()
         {
             return load;
+        }
+
+        public void unloadContainer(int index)
+        {
+            containersOnTheShip.RemoveAt(index);
+        }
+        
+        public List<Container> getContainers()
+        {
+            return containersOnTheShip;
         }
 
         public void notify()

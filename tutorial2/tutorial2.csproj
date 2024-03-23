@@ -44,6 +44,7 @@
         <Compile Include="IHazardNotifier.cs" />
         <Compile Include="LiquidContainer.cs" />
         <Compile Include="main.cs" />
+        <Compile Include="OverfillException.cs" />
         <Compile Include="Product.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="RefrigiratedContainer.cs" />

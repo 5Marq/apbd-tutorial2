@@ -43,67 +43,91 @@ namespace tutorial2
             {
                 case "1":
                 {
-                    this.product = new Product("Bananas", temperature);
-                    if (this.product.isTempOk())
+                    try
                     {
-                        if (cargoWeight > getMaxLoad())
+                        this.product = new Product("Bananas", temperature);
+                        if (this.product.isTempOk())
                         {
-                            notify();
-                            break;
+                            if (cargoWeight > getMaxLoad())
+                            {
+                                throw new OverfillException("Cannot load cargo! Max load exceeded!");
+                            }
+                            setCargoWeight(cargoWeight);
+                            Console.WriteLine("Cargo loaded successfully!");
                         }
-                        setCargoWeight(cargoWeight);
-                        Console.WriteLine("Cargo loaded successfully!");
                     }
-
+                    catch (OverfillException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                     break;
                 }
                 case "2":
                 {
-                    this.product = new Product("Chocolate", temperature);
-                    if (this.product.isTempOk())
+                    try
                     {
-                        if (cargoWeight > getMaxLoad())
+                        this.product = new Product("Chocolate", temperature);
+                        if (this.product.isTempOk())
                         {
-                            notify();
-                            break;
+                            if (cargoWeight > getMaxLoad())
+                            {
+                                throw new OverfillException("Cannot load cargo! Max load exceeded!");
+                            }
+
+                            setCargoWeight(cargoWeight);
+                            Console.WriteLine("Cargo loaded successfully!");
                         }
-                        setCargoWeight(cargoWeight);
-                        Console.WriteLine("Cargo loaded successfully!");
+                    }
+                    catch (OverfillException e)
+                    {
+                        Console.WriteLine(e.Message);
                     }
                     break;
                 }
                 case "3":
                 {
-                    this.product = new Product("Fish", temperature);
-                    if (this.product.isTempOk())
+                    try
                     {
-                        if (cargoWeight > getMaxLoad())
+                        this.product = new Product("Fish", temperature);
+                        if (this.product.isTempOk())
                         {
-                            notify();
-                            break;
+                            if (cargoWeight > getMaxLoad())
+                            {
+                                throw new OverfillException("Cannot load cargo! Max load exceeded!");
+                            }
+
+                            setCargoWeight(cargoWeight);
+
+                            Console.WriteLine("Cargo loaded successfully!");
                         }
-                        setCargoWeight(cargoWeight);
-
-                        Console.WriteLine("Cargo loaded successfully!");
                     }
-
+                    catch (OverfillException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                     break;
                 }
                 case "4":
                 {
-                    this.product = new Product("Meat", temperature);
-                    if (this.product.isTempOk())
+                    try
                     {
-                        if (cargoWeight > getMaxLoad())
+                        this.product = new Product("Meat", temperature);
+                        if (this.product.isTempOk())
                         {
-                            notify();
-                            break;
+                            if (cargoWeight > getMaxLoad())
+                            {
+                                throw new OverfillException("Cannot load cargo! Max load exceeded!");
+                            }
+
+                            setCargoWeight(cargoWeight);
+
+                            Console.WriteLine("Cargo loaded successfully!");
                         }
-                        setCargoWeight(cargoWeight);
-
-                        Console.WriteLine("Cargo loaded successfully!");
                     }
-
+                    catch (OverfillException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                     break;
                 }
                 default:

@@ -40,6 +40,18 @@ namespace tutorial2
             for (int i = 0; i < shipsToShow.Count; i++)
             {
                 Console.WriteLine(i+". Serial: "+shipsToShow[i].getSerialNumber());
+                Console.WriteLine("Containers on this ship:");
+                List<Container> tempContainers = shipsToShow[i].getContainers();
+                if (containersToShow.Count == 0)
+                {
+                    Console.WriteLine("No containers to show!");
+                    Thread.Sleep(1000);
+                    return;
+                }
+                for (int j = 0; j < shipsToShow[i].getContainers().Count; j++)
+                {
+                    Console.WriteLine(tempContainers[i].getSerialNumber());
+                }
             }
             Thread.Sleep(1000);
         }
@@ -65,10 +77,7 @@ namespace tutorial2
                     double depth = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine("Enter container max load: ");
                     double maxLoad = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("Is the container dangerous? (true/false)");
-                    bool isDangerous = Convert.ToBoolean(Console.ReadLine());
-                    Container liquidContainer = new LiquidContainer(height, 1420, depth, 'L', maxLoad,
-                        isDangerous);
+                    Container liquidContainer = new LiquidContainer(height, 1420, depth, 'L', maxLoad);
                     liquidContainer.addContainer(liquidContainer);
                     containersToShow.Add(liquidContainer);
                     Console.WriteLine("Container added successfully!");
@@ -116,7 +125,7 @@ namespace tutorial2
         protected static void addShip()
         {
             Console.WriteLine("Enter max ship load: ");
-            int maxLoad = Convert.ToInt16(Console.ReadLine());
+            double maxLoad = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Enter max containers allowed: ");
             int maxContainers = Convert.ToInt16(Console.ReadLine());
             Console.WriteLine("Enter cruising speed: ");
@@ -125,6 +134,31 @@ namespace tutorial2
             shipsToShow.Add(ship);
             Console.WriteLine("Ship added successfully!");
             Thread.Sleep(1000);
+        }
+
+        protected static void addContainerToShip()
+        {
+            showContainers();
+            Console.WriteLine("Choose container to load to the ship(pick a number): ");
+            int containerChoice = Convert.ToInt16(Console.ReadLine());
+            showShips();
+            Console.WriteLine("Choose ship to load the container(pick a number): ");
+            int shipChoice = Convert.ToInt16(Console.ReadLine());
+            shipsToShow[shipChoice].addContainer(containersToShow[containerChoice]);
+            Console.WriteLine("Container loaded to the ship successfully!");
+            Thread.Sleep(1500);
+        }
+
+        protected static void unloadContainerFromShip()
+        {
+            showShips();
+            Console.WriteLine("Choose ship to unload the container(pick a number): ");
+            int shipChoice = Convert.ToInt16(Console.ReadLine());
+            List<Container> tempContainers = shipsToShow[shipChoice].getContainers();
+            Console.WriteLine("Choose container to unload from the ship(pick a number): ");
+            int containerChoice = Convert.ToInt16(Console.ReadLine());
+            shipsToShow[shipChoice].unloadContainer(containerChoice);
+            Console.WriteLine("Container unloaded from the ship successfully!");
         }
 
         public static void Main(string[] args)
@@ -165,7 +199,6 @@ namespace tutorial2
                         Console.WriteLine("Enter cargo weight: ");
                         double cargoWeight = Convert.ToDouble(Console.ReadLine());
                         containersToShow[containerChoice].loadCargo(cargoWeight);
-                        Console.WriteLine("Cargo successfully loaded!");
                         Thread.Sleep(1000);
                         break;
                     }
@@ -176,10 +209,12 @@ namespace tutorial2
                     }
                     case "4":
                     {
+                        addContainerToShip();
                         break;
                     }
                     case "5":
                     {
+                        unloadContainerFromShip();
                         break;
                     }
                     case "6":

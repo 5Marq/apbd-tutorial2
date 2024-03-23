@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+//zakladamy ze do kazdego kontenera mozna dodac tylko jeden produkt
 
 namespace tutorial2
 {
