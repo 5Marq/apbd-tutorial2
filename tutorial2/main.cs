@@ -39,7 +39,7 @@ namespace tutorial2
                         
             for (int i = 0; i < shipsToShow.Count; i++)
             {
-                Console.WriteLine("Ship ID: "+shipsToShow[i].getSerialNumber());
+                Console.WriteLine(i+". Serial: "+shipsToShow[i].getSerialNumber());
             }
             Thread.Sleep(1000);
         }
@@ -112,6 +112,20 @@ namespace tutorial2
                 }
             }
         }
+        
+        protected static void addShip()
+        {
+            Console.WriteLine("Enter max ship load: ");
+            int maxLoad = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("Enter max containers allowed: ");
+            int maxContainers = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("Enter cruising speed: ");
+            double cruisingSpeed = Convert.ToDouble(Console.ReadLine());
+            Ship ship = new Ship(maxLoad, maxContainers, cruisingSpeed);
+            shipsToShow.Add(ship);
+            Console.WriteLine("Ship added successfully!");
+            Thread.Sleep(1000);
+        }
 
         public static void Main(string[] args)
         {
@@ -157,7 +171,7 @@ namespace tutorial2
                     }
                     case "3":
                     {
-                        
+                        addShip();
                         break;
                     }
                     case "4":
@@ -191,6 +205,7 @@ namespace tutorial2
                     }
                     case "8":
                     {
+                        showShips();
                         break;
                     }
                     case "9":
